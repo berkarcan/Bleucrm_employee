@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
     public void setUp() {
       String url = ConfigurationReader.get("url");
       Driver.get().get(url);
+      Driver.get().manage().window().maximize();
       Driver.get().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 

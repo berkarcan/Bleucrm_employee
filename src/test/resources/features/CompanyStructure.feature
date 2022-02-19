@@ -8,7 +8,7 @@ Feature: Users should be able to see and edit company structure
 
   Scenario: user can see company structure
     When the user clicks on on "Employees" tab on the Dashboard page
-    Then the user should be able to see "Company Structur" title
+    Then the user should be able to see "Company Structure" title
 
   Scenario: user can edit company structure
     When the user clicks on on "Employees" tab on the Dashboard page

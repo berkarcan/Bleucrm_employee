@@ -3,11 +3,13 @@ package com.bleucrm.step_definitions;
 import com.bleucrm.pages.DashBoardPage;
 import com.bleucrm.pages.EmployeesPage;
 import com.bleucrm.utilities.Driver;
+import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import static com.bleucrm.utilities.BrowserUtils.*;
 
 public class EmployeesStepDEf {
 
@@ -30,7 +32,9 @@ public class EmployeesStepDEf {
 
   @And("the user click on Add department button")
   public void theUserClickOnAddDepartmentButton() {
-   new EmployeesPage().addDepartment.click();
+   EmployeesPage employeesPage=new EmployeesPage();
+   waitForClickability(employeesPage.addDepartment,5);
+   employeesPage.addDepartment.click();
   }
 
 
