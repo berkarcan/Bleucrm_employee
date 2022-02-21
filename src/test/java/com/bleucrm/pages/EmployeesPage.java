@@ -11,4 +11,8 @@ public class EmployeesPage extends  BasePage{
   @FindBy(className = "webform-small-button-text")
   public WebElement addDepartment;
 
+
+  @FindBy(xpath = "//span[.='Find Employee']")
+  public WebElement findEmployeeButton;
+
 }

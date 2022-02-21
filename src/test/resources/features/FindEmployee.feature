@@ -8,14 +8,14 @@ Feature: User should be able to find employees by search by Alphabet
 
     Scenario: User can find employees by surname initial character
       When the user click on Find Employee menu
-      Then Find Employee title is displayed
+      Then "Find Employee" title is displayed
       And the user  clicks Search By Alphabet button
       And the user clicks the initial character "U" of the searched user
       Then the information of the user with initial "U" is displayed
 
   Scenario: User can find employees by an initial character of a user without surname
     When the user click on Find Employee menu
-    Then Find Employee title is displayed
+    Then "Find Employee" title is displayed
     And the user  clicks Search By Alphabet button
     And the user clicks the initial character "M" of the searched user
     Then the information of the user with initial "M" is displayed
