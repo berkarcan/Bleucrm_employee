@@ -1,4 +1,4 @@
-@wip
+
 Feature: Users should be able to see and edit company structure
 
   Background:
