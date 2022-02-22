@@ -35,7 +35,7 @@ public class FindEmployeeSteDefs {
     Assert.assertEquals("Actual title is different tha expected", expectedtitle, actualTitle);
 
     Assert.assertFalse(initials.isEmpty());
-    System.out.println("[Surname initials, Only Name initials]\n" + initials.toString());
+    System.out.println("[Surname initials, Only Name initials]\n" + initials);
 
   }
 
@@ -68,7 +68,7 @@ public class FindEmployeeSteDefs {
       Assert.assertFalse("No results for an employee without surname. There are users with "+initials.get(1).toString()+" initials.",resulting_employees.isEmpty());
     }else{
 
-      Assert.fail("Initial character must be one of the following: \n"+initials.toString());
+      Assert.fail("Initial character must be one of the following: \n"+initials);
 
     }
 

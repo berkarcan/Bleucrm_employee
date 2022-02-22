@@ -19,3 +19,4 @@ Feature: User should be able to find employees by search by Alphabet
     When the user  clicks Search By Alphabet button
       And the user clicks the initial character "M" of the searched user
     Then the information of the user with initial "M" is displayed
+
