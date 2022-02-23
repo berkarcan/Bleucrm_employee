@@ -12,23 +12,22 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 
 public class LoginsStepDef {
 
-
+  LoginPage loginPage=new LoginPage();
   @Given("the user is on the page which has the title {string}")
   public void theUserIsOnThePageWhichHasTheTitle(String title){
 
-    //waitForVisibility(Driver.get().findElement(By.xpath("//title")),10);
-    Assert.assertEquals("Title is different than expected",title,Driver.get().getTitle());
+    waitForVisibility(loginPage.header_title,5);
+    Assert.assertEquals("Title is different than expected",title,loginPage.header_title.getText());
 
   }
 
   @When("the user logins with a valid {string} and {string}")
   public void theUserLoginsWithAValidAnd(String username, String password) {
-    LoginPage loginPage=new LoginPage();
+
     username= ConfigurationReader.get("username");
     password=ConfigurationReader.get("password");
     loginPage.login(username, password);
@@ -43,7 +42,6 @@ public class LoginsStepDef {
 
   @When("the user logins with invalid credential {string} username {string} password")
   public void theUserLoginsWithAInvalidCredentialUsernamePassword(String username, String password){
-    LoginPage loginPage=new LoginPage();
     if (username.equals(ConfigurationReader.get("username")) && !password.equals(ConfigurationReader.get("password")) ){
       username = ConfigurationReader.get("username");
     }else if(!username.equals(ConfigurationReader.get("username")) && password.equals(ConfigurationReader.get("password")) ){
@@ -62,7 +60,7 @@ public class LoginsStepDef {
 
   @When("the user clicks on the Forgot your password? link")
   public void theUserClicksOnTheForgotYourPasswordLink() {
-      new LoginPage().ForgetPasswordButton.click();
+      loginPage.ForgetPasswordButton.click();
   }
 
   @And("Inserts login or email clicks to reset {string}")
@@ -82,7 +80,6 @@ public class LoginsStepDef {
 
   @When("the user logins with valid {string} and {string} clicking on Remember check box")
   public void theUserEntersAValidClickingOnRememberCheckBox(String username, String password) {
-    LoginPage loginPage=new LoginPage();
     username= ConfigurationReader.get("username");
     password=ConfigurationReader.get("password");
     loginPage.remember.click();
@@ -101,11 +98,6 @@ public class LoginsStepDef {
     System.out.println("new LoginPage().username_box.getText() = " + new LoginPage().username_box.getText());
   }
 
-
-  @And("Inserts incorrect login or email clicks to reset {string}")
-  public void insertsIncorrectLoginOrEmailClicksToReset(String reset) {
-
-  }
 
   @And("Inserts incorrect {string} or {string} clicks to reset {string} and sees {string}")
   public void insertsIncorrectOrClicksToReset( String login, String email, String reset, String expectedMessage) {

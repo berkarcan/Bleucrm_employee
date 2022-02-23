@@ -1,4 +1,4 @@
-@wip
+
 Feature: User should be able to find employees by search by Alphabet
   Background:
     Given the user is on the page which has the title "Authorization"

@@ -1,5 +1,6 @@
 package com.bleucrm.pages;
 
+import com.bleucrm.utilities.BrowserUtils;
 import com.bleucrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,8 @@ public class LoginPage {
 
   @FindBy (id="USER_REMEMBER")
   public WebElement remember;
+  @FindBy (className ="log-popup-header")
+  public WebElement header_title;
 
 
   public void login(String username, String password){
