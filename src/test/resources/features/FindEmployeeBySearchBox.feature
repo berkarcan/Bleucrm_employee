@@ -7,7 +7,7 @@ Feature: User should be able to find employees by searchbox
     Then the user should be able to reach the dashboard page with the username on the the top right
     And the user clicks on on "Employees" tab on the Dashboard page
 
-  Scenario Outline: User can find employees by surname initial character
+  Scenario Outline: User can find employees by searchbox
     When the user click on Find Employee menu
     Then "Find Employee" title is displayed with the user list
     When the user inserts "<characters>" and click enter

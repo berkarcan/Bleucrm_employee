@@ -4,7 +4,6 @@ import com.bleucrm.pages.EmployeesPage;
 import com.bleucrm.pages.FindEmployeePage;
 import com.bleucrm.utilities.BrowserUtils;
 import com.bleucrm.utilities.Driver;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -46,7 +45,7 @@ public class FindEmployeeSteDefs {
   }
 
 
-  @When("the user  clicks Search By Alphabet button")
+  @When("the user clicks Search By Alphabet button")
   public void the_user_clicks_Search_By_Alphabet_button() {
     findEmployeePage.SearchByAlphabetButton.click();
 
@@ -106,7 +105,7 @@ public class FindEmployeeSteDefs {
 
     if (!actualList.equals(expectedList)) {
       for (String employee : employeeList) {
-        if (employee.contains(str)) {
+        if (employee.contains(str) && !actualList.contains(employee)){
           employeesPage.findEmployeeButton.click();
           actions = new Actions(Driver.get());
           actions.moveToElement(Driver.get().findElement(By.linkText(employee)));
@@ -117,7 +116,6 @@ public class FindEmployeeSteDefs {
       }
     }
   }
-
 
 }
 
