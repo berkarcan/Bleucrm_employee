@@ -11,8 +11,7 @@ Feature: User should be able to find employees by searchbox
     When the user click on Find Employee menu
     Then "Find Employee" title is displayed with the user list
     When the user inserts "<characters>" and click enter
-    Then the number of retrieved users equals to the number users containing "<characters>"
-    And the information of the usernames containing "<characters>" is displayed
+   Then the information of the usernames containing "<characters>" is displayed
     Examples:
       | characters |
       | han        |

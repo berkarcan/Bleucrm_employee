@@ -26,7 +26,7 @@ public class FindEmployeePage extends BasePage {
   @FindBy(className = "employee-name-link")
   public List<WebElement> employees;
   @FindBy(xpath = "//*[@id='comp_c14920942c1dc3377c56d580c09bf654']/p")
-  public WebElement errorMessage;
+  public List<WebElement> errorMessage; //not to have an error if there is not message
 
   public List<List<String>> initials() {
 

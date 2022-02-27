@@ -11,7 +11,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.assertj.core.api.SoftAssertions;
 
 import static com.bleucrm.utilities.BrowserUtils.*;
 
@@ -81,54 +80,42 @@ public class FindEmployeeSteDefs {
 
   }
 
-  public List<String> employee_list;
-  public List<String> retrievedList;
+  public List<String> employeeList;
+  public List<String> actualList;
   public Actions actions;
-  public int nRetrieved;
-  public int nListed;
-
+  String errorMessage;
   @When("the user inserts {string} and click enter")
   public void theUserInsertsAndClickEnter(String chars) {
-    employee_list = getElementsText(findEmployeePage.employees);
-    System.out.println("employee_list = " + employee_list);
+    employeeList = getElementsText(findEmployeePage.employees);
+    System.out.println("employee_list = " + employeeList);
     findEmployeePage.SearchByBox.sendKeys(chars, Keys.ENTER);
   }
 
-  SoftAssertions sa = null;
-  @Then("the number of retrieved users equals to the number users containing {string}")
-  public void theNumberOfRetrievedUsersEqualsToTheNumberUsersContaining(String chars) {
-    retrievedList = getElementsText(findEmployeePage.employees);
-    System.out.println("retrievedList  = " + retrievedList );
-    nRetrieved=BrowserUtils.NumberOfStrings(retrievedList,chars);
-    System.out.println("nRetrieved = " + nRetrieved);
-    nListed=BrowserUtils.NumberOfStrings(employee_list,chars);
-    System.out.println("nListed = " + nListed);
-    if (nRetrieved!=nListed) {
-      for (String employee : employee_list) {
-        if (employee.contains(chars)) {
+
+  @Then("the information of the usernames containing {string} is displayed")
+  public void theInformationOfTheUsernamesContainingIsDisplayed(String str) {
+    actualList = getElementsText(findEmployeePage.employees);
+    System.out.println("actualList  = " + actualList );
+
+    if (!findEmployeePage.errorMessage.isEmpty()) {
+      errorMessage = findEmployeePage.errorMessage.get(0).getText();
+    }
+
+    List<String> expectedList=BrowserUtils.matchingStrings(employeeList,str);
+    System.out.println("expectedList = " + expectedList);
+
+    if (!actualList.equals(expectedList)) {
+      for (String employee : employeeList) {
+        if (employee.contains(str)) {
           employeesPage.findEmployeeButton.click();
           actions = new Actions(Driver.get());
           actions.moveToElement(Driver.get().findElement(By.linkText(employee)));
-          actions.perform();//go to the failing element
-          sa.assertThat(nListed=nRetrieved);
+          actions.perform();//go to the unlisted element
+          Assert.assertEquals(errorMessage+" NOTE: Screenshot shows an unlisted employee.", expectedList,actualList);
           break;
         }
       }
     }
-
-  }
-
-  @Then("the information of the usernames containing {string} is displayed")
-  public void theInformationOfTheUsernamesContainingIsDisplayed(String chars) {
-    if (nRetrieved!=nListed){
-      actions.moveToElement(employeesPage.findEmployeeButton);
-      actions.perform();
-      employeesPage.findEmployeeButton.click();
-      findEmployeePage.SearchByBox.sendKeys(chars, Keys.ENTER);
-      sa.assertThat(nListed=nRetrieved);
-
-    }
-
   }
 
 

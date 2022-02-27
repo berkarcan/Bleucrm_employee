@@ -8,16 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BrowserUtils {
-  static int number;
-  public static int NumberOfStrings(List<String> l, String str) {
-    number=0;
-    for (String element: l) {
-      if(element.contains(str)){
-        number++;
-      }
-    }
-    return number;
-  }
+
 
   public static List<String> getElementsText(List<WebElement> list) {
     List<String> elemTexts = new ArrayList<>();
@@ -25,6 +16,17 @@ public class BrowserUtils {
       elemTexts.add(el.getText());
     }
     return elemTexts;
+  }
+
+  public static List<String> matchingStrings(List<String> listOfStrings, String insertedStr) {
+    List<String> StrinList = new ArrayList<>();
+    for (String str : listOfStrings) {
+      if (str.contains(insertedStr)){
+        StrinList.add(str);
+      }
+
+    }
+    return StrinList;
   }
 
   public static void waitFor(int seconds) {
@@ -45,5 +47,18 @@ public class BrowserUtils {
     return wait.until(ExpectedConditions.elementToBeClickable(element));
   }
 
+  /*
+
+    static int number;
+  public static int NumberOfStrings(List<String> l, String str) {
+    number=0;
+    for (String element: l) {
+      if(element.contains(str)){
+        number++;
+      }
+    }
+    return number;
+  }
+   */
 
 }
