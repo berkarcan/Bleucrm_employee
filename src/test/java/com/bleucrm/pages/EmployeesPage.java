@@ -12,7 +12,7 @@ public class EmployeesPage extends  BasePage{
   public WebElement addDepartment;
 
 
-  @FindBy(xpath = "//span[.='Find Employee']")
+  @FindBy(xpath = "(//span[.='Find Employee'])[1]")
   public WebElement findEmployeeButton;
 
 }

@@ -4,7 +4,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtils {
+  static int number;
+  public static int NumberOfStrings(List<String> l, String str) {
+    number=0;
+    for (String element: l) {
+      if(element.contains(str)){
+        number++;
+      }
+    }
+    return number;
+  }
+
+  public static List<String> getElementsText(List<WebElement> list) {
+    List<String> elemTexts = new ArrayList<>();
+    for (WebElement el : list) {
+      elemTexts.add(el.getText());
+    }
+    return elemTexts;
+  }
 
   public static void waitFor(int seconds) {
     try {

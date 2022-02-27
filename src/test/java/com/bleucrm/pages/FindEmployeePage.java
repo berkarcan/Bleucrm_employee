@@ -20,8 +20,13 @@ public class FindEmployeePage extends BasePage {
   })
   public WebElement SearchByAlphabetButton;
 
+  @FindBy(id="user-fio")
+  public WebElement SearchByBox;
+
   @FindBy(className = "employee-name-link")
   public List<WebElement> employees;
+  @FindBy(xpath = "//*[@id='comp_c14920942c1dc3377c56d580c09bf654']/p")
+  public WebElement errorMessage;
 
   public List<List<String>> initials() {
 
