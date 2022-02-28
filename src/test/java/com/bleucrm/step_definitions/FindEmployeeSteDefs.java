@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.bleucrm.utilities.BrowserUtils.*;
 
@@ -116,6 +118,20 @@ public class FindEmployeeSteDefs {
       }
     }
   }
+
+  @When("the user clicks on More")
+  public void theUserClicksOnMore() {
+    findEmployeePage.MoreButton.click();
+
+
+  }
+
+  @Then("the user clicks Export to Excel to save users.xls successfully")
+  public void theUserClicksExportToExcelToSaveUsersXls() {
+    findEmployeePage.exportToExcelButton.click();
+  }
+
+
 
 }
 

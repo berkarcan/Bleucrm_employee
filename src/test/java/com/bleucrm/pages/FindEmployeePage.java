@@ -28,6 +28,13 @@ public class FindEmployeePage extends BasePage {
   @FindBy(xpath = "//*[@id='comp_c14920942c1dc3377c56d580c09bf654']/p")
   public List<WebElement> errorMessage; //not to have an error if there is not message
 
+  @FindBy(xpath = "//*[@class='filter-but-icon']")
+  public WebElement MoreButton;
+
+   @FindBy(xpath = "//*[.='Export to Excel']/span[2]")
+   public WebElement exportToExcelButton;
+
+
   public List<List<String>> initials() {
 
     ArrayList charsWithSurname = new ArrayList();

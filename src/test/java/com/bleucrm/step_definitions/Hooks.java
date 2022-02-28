@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
         scenario.attach(screenshot, "image/png", "screenshot");
       }
 
-      Driver.closeDriver();
+     Driver.closeDriver();
 
     }
 

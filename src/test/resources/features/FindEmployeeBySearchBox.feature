@@ -1,4 +1,4 @@
-@wip
+
 Feature: User should be able to find employees by searchbox
 
   Background:

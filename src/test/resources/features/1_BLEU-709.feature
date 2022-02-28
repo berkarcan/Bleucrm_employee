@@ -43,3 +43,9 @@ Feature: Find Employee
 		When the user clicks Search By Alphabet button
 		And the user clicks the initial character "M" of the searched user
 		Then the information of the user with initial "M" is displayed
+
+	@BLEU-718 @BLEU-709
+	Scenario:User should be able to export employee list
+		When the user click on Find Employee menu
+		And the user clicks on More
+		Then the user clicks Export to Excel to save users.xls successfully
