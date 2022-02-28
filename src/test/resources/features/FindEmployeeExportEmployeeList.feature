@@ -1,4 +1,4 @@
-@wip
+
 Feature: User should be able to export employee list
   Background:
     Given the user is on the page which has the title "Authorization"
